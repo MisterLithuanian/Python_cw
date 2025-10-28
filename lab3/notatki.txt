@@ -1,0 +1,15 @@
+x = 2; y = 3;
+if (x > y):
+    result = x;
+else:
+    result = y;
+#nie są potrzebne ';'
+for i in "axby": if ord(i) < 100: print (i)
+#if nie może być w tym miejsc
+for i in "axby": print (ord(i) if ord(i) < 100 else i) #ok
+L = [3, 5, 4] ; L = L.sort() #źle bo do L jest przypisywane 0
+x, y = 1, 2, 3 #źle bo 3 nie jest do niczego przypisywane, ilość zmiennych po obu stronach musi być równa
+X = 1, 2, 3 ; X[1] = 4 #źle bo nawiasy są źle
+X = [1, 2, 3] ; X[3] = 4 #źle bo indeksy są do 2
+X = "abc" ; X.append("d") #nie ma takiej metody do stringa
+L = list(map(pow, range(8))) #pow potrzebuje dwóch zmiennych
