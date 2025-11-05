@@ -66,3 +66,4 @@ def roman2int(s):
         poprzednik = value
     return total
 print(roman2int("IV"))     
+print(roman2int("VI"))  
