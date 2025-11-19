@@ -43,4 +43,43 @@ def fibonnaci(n):
         b=pom
     return b
 #4.5
-reversed
+def odwracanie_ite(L,left,right):
+    while left<right:
+        L[left], L[right] = L[right], L[left]
+        left=+1
+        right=-1
+    return L
+
+def odwracanie_rek(L,left,right):
+    if left>=right:  
+        return L
+    L[left], L[right] = L[right], L[left]
+    return odwracanie_rek(L,left+1,right-1)
+    
+
+L=[1,3,5,7,8,2]
+print(odwracanie_ite(L,2,4))
+L=[1,3,5,7,8,2]
+print(odwracanie_rek(L,2,4))
+
+#4.6 
+def sum_seq(sequence):
+    total = 0
+    for item in sequence:
+        if isinstance(item, (list, tuple)):
+            total += sum_seq(item)     
+        else:
+            total += item              
+    return total
+
+P=[1,[2,3],[4,5,6]]
+print(sum_seq(P))
+#4.7
+def flatten(sequence):
+    flat = []
+    for item in sequence:
+        if isinstance(item, (list, tuple)):
+            flat.extend(flatten(item))   
+        else:
+            flat.append(item)           
+    return flat
