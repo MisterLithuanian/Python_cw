@@ -1,0 +1,43 @@
+import unittest
+from points import Point
+
+class TestPoint(unittest.TestCase):
+
+    def test_str(self):
+        p = Point(1, 2)
+        self.assertEqual(str(p), "(1, 2)")
+
+    def test_repr(self):
+        p = Point(3, 4)
+        self.assertEqual(repr(p), "Point(3, 4)")
+
+    def test_eq(self):
+        self.assertTrue(Point(1, 1) == Point(1, 1))
+        self.assertFalse(Point(1, 2) == Point(2, 1))
+
+    def test_ne(self):
+        self.assertTrue(Point(1, 2) != Point(2, 1))
+        self.assertFalse(Point(1, 1) != Point(1, 1))
+
+    def test_add(self):
+        self.assertEqual(Point(1, 2) + Point(3, 4), Point(4, 6))
+
+    def test_sub(self):
+        self.assertEqual(Point(5, 5) - Point(2, 3), Point(3, 2))
+
+    def test_mul(self):
+        self.assertEqual(Point(1, 2) * Point(3, 4), 11)
+
+    def test_cross(self):
+        self.assertEqual(Point(1, 2).cross(Point(3, 4)), -2)
+
+    def test_length(self):
+        self.assertAlmostEqual(Point(3, 4).length(), 5.0)
+
+    def test_hash(self):
+        s = {Point(1, 2), Point(1, 2)}
+        self.assertEqual(len(s), 1)
+
+
+if __name__ == "__main__":
+    unittest.main()
