@@ -16,13 +16,13 @@ class TestFrac(unittest.TestCase):
 		self.assertFalse(self.a.__eq__(self.b))
 		self.assertFalse(self.a == self.b)
 	def test_neq(self): 
-		pass
+		self.assertTrue(self.a!=self.b)
 	def test_lt(self):
-		pass
+		self.assertTrue(self.a<self.b)
 	def test_le(self):
-		pass
+		self.assertTrue(self.a<=self.b)
 	def test_gt(self): 
-		pass
+		pself.assertTrue(self.a<self.b)
 	def test_ge(self): 
 		pass
 	def test_add(self): 
