@@ -6,7 +6,8 @@ class TestFrac(unittest.TestCase):
 	def setUp(self): 
 		self.a = Frac(4, 3)
 		self.b = Frac(4, 1)
-
+		self.c = Frac(-4, 3)
+		self.d = Frac(1 ,2)
 	def test_str(self):
 		self.assertEqual(str(self.a), "4/3")
 		self.assertEqual(str(self.b), "4")
@@ -22,25 +23,25 @@ class TestFrac(unittest.TestCase):
 	def test_le(self):
 		self.assertTrue(self.a<=self.b)
 	def test_gt(self): 
-		pself.assertTrue(self.a<self.b)
+		self.assertFalse(self.a>self.b)
 	def test_ge(self): 
-		pass
+		self.assertFalse(self.a>=self.b)
 	def test_add(self): 
-		pass
+		self.assertEqual(self.a+self.b, Frac(16, 3))
 	def test_sub(self):
-		pass
+		self.assertEqual(self.b-self.a, Frac(8, 3))
 	def test_mul(self):
-		pass
+		self.assertEqual(self.a*self.b, Frac(16, 3))
 	def test_div(self):
-		pass
+		self.assertEqual(self.a/self.b, Frac(1, 3))
 	def test_pos(self):
-		pass
+		self.assertEqual(+self.c, Frac(-4, 3))
 	def test_neg(self):
-		pass
+		self.assertEqual(-self.c, Frac(4, 3))
 	def test_invert(self):
-		pass
+		self.assertEqual(~self.a, Frac(3, 4))
 	def test_float(self):
-		pass
+		self.assertEqual(float(self.d), 0.5)
 	def test_hash(self): 
 		pass
 	def tearDown(self): 
