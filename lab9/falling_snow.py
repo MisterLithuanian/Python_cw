@@ -2,10 +2,9 @@ import pygame
 import random
 import sys
 
-# ---------- konfiguracja ----------
 WIDTH, HEIGHT = 1000, 1000
 FPS = 60
-SNOW_RADIUS = 8
+SNOW_RADIUS = 10
 SNOW_SPEED = 2
 SPAWN_INTERVAL = 1000  
 
