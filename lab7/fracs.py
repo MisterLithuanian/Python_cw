@@ -7,8 +7,11 @@ class Frac:
         if (y==0): raise ValueError
         self.x = x
         self.y = y
-        
-        self.normalize()
+        r = math.gcd( int(self.x), int(self.y) )
+        self.x, self.y = self.x // r, self.y // r
+        if (self.y < 0): 
+            self.y *= -1
+            self.x *= -1
 
     def normalize(self):
         r = math.gcd( int(self.x), int(self.y) )
