@@ -22,12 +22,10 @@ class Frac:
         return self
 
     def wspolny_dzielnik(self, frac1, frac2):
-        frac1.x *= frac2.y
-        frac2.x *= frac1.y
-        frac1.y = frac1.y*frac2.y
-        frac2.y = frac1.y
-    
-        return [frac1, frac2]
+        a = Frac(frac1.x * frac2.y, frac1.y * frac2.y)
+        b = Frac(frac2.x * frac1.y, frac1.y * frac2.y)
+        return a, b
+
 
     def __str__(self):          # zwraca "x/y" lub "x" dla y=1
         return str(self.x) + (f"/{self.y}" if abs(self.y)!=1 else "")
@@ -39,10 +37,13 @@ class Frac:
     #def __cmp__(self, other): pass  # cmp(frac1, frac2)
 
     # Py2.7 i Py3
-    def __eq__(self, other): 
-        if (isinstance(other, Frac) ): return self.x == other.x and self.y == other.y
-        if (isinstance(other, int) ): return self.x == other and self.y == 1
-
+    def __eq__(self, other):
+        if isinstance(other, Frac):
+            return self.x == other.x and self.y == other.y
+        if isinstance(other, int):
+            return self.x == other and self.y == 1
+        return False
+    
     def __ne__(self, other): 
         return not self == other
 
@@ -58,22 +59,26 @@ class Frac:
     def __ge__(self, other): 
         return (self.x*other.y >= self.y*other.x)
 
-    def __add__(self, other):   # frac1+frac2, frac+int
-        if( isinstance(other, int) ): return Frac( self.x + (other*self.y), self.y ).normalize()
-        if( isinstance(other, Frac) ):
-            frac1, frac2 = self.wspolny_dzielnik(self, other)
-            frac1.x += frac2.x
-            return frac1.normalize()
-
+    def __add__(self, other):
+        if isinstance(other, int):
+            return Frac(self.x + other * self.y, self.y)
+        if isinstance(other, Frac):
+            return Frac(
+                self.x * other.y + other.x * self.y,
+                self.y * other.y
+            )
+        
     __radd__ = __add__              # int+frac
 
-    def __sub__(self, other):   # frac1-frac2, frac-int
-        if( isinstance(other, int) ): return Frac(self.x - self.y * other, self.y)
-        if( isinstance(other, Frac) ):
-            frac1, frac2 = self.wspolny_dzielnik(self, other)
-            frac1.x -= frac2.x
-            return frac1.normalize()
-
+    def __sub__(self, other):
+        if isinstance(other, int):
+            return Frac(self.x - other * self.y, self.y)
+        if isinstance(other, Frac):
+            return Frac(
+                self.x * other.y - other.x * self.y,
+                self.y * other.y
+            )
+        
     def __rsub__(self, other):      # int-frac
         # tutaj self jest frac, a other jest int!
         return Frac(self.y * other - self.x, self.y)
