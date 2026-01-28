@@ -9,8 +9,7 @@ def unbounded_knapSack(weights, profit, capacity):
 
     return dp[capacity]
 
-if __name__ == '__main__': 
-    profit = [100, 200, 300] 
-    weight = [10, 20, 30] 
-    W = 100
-    print(unbounded_knapSack(weight, profit, W)) 
+profit = [100, 200, 300] 
+weight = [10, 20, 30] 
+W = 100
+print(unbounded_knapSack(weight, profit, W)) 
