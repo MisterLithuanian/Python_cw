@@ -10,9 +10,10 @@ def knapSack(W, wt, val, n):
 
 
 if __name__ == '__main__': 
-    profit = [100, 200, 300] 
-    weight = [10, 20, 30] 
-    W = 100
+    profit = [3, 4, 5, 8]
+    weight = [2, 3, 4, 5]
+    W = 8
+
     n = len(profit) 
     print(knapSack(W, weight, profit, n))
 
